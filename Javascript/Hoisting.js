@@ -63,13 +63,6 @@
 // }
 // console.log(dojo);
 
-param => {
-    let a = 1;
-    return a + param;
-  }
-
-  cos
-
 
 //8
 // console.log(makeDojo("Chicago", 65));
