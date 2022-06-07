@@ -30,6 +30,38 @@ class BinarySearchTree{
         root=insert(root,value);
     }
 
+    public Node searchNode(Node root, int value){
+        if(root==null||root.key==value){
+
+            return root;
+        }
+        
+        if(root.key>value){
+            return searchNode(root.left, value);
+        }
+        else{
+            return searchNode(root.right, value);
+        }
+    
+    }
+
+    public void search(int value){
+        if(searchNode(root,value)==null){
+            System.out.println("false");
+        }
+        else{
+            if(searchNode(root.left,value)!=null){
+            System.out.println("True it found : "+searchNode(root,value).key+" it left");
+            }
+            else if(searchNode(root.right,value)!=null){
+                System.out.println("True it found : "+searchNode(root,value).key+" it right");
+            }
+            else{
+                System.out.println("True it found : "+searchNode(root,value).key+" it root");
+            }
+        }
+    }
+
     public void print(Node root){
         if(root!=null){
             print(root.left);
@@ -42,7 +74,6 @@ class BinarySearchTree{
         print(root);
     }
 
-
-
+  
 }
 
