@@ -7,10 +7,10 @@ import Person4 from './PersonCard/Person4';
 function App() {
   return (
     <div className="App">
-      <Person1 firstName="majed" lastName="Amria" age="26" hairColor="Black"></Person1>
-      <Person2 firstName="fadi" lastName="abuaita" age="30" hairColor="Black"></Person2>
-      <Person3 firstName="hana" lastName="alpidaq" age="43" hairColor="Black"></Person3>
-      <Person4 firstName="rahaf" lastName="hussari" age="27" hairColor="Black"></Person4>
+      <Person1 firstName="Duo" lastName="Johe" age={26} hairColor="Black" ></Person1>
+      <Person2 firstName="new" lastName="person" age={30} hairColor="Brown"></Person2>
+      <Person3 firstName="last" lastName="human" age={43} hairColor="Gray"></Person3>
+      <Person4 firstName="old" lastName="one" age={27} hairColor="Red"></Person4>
       </div>
   );
 }
