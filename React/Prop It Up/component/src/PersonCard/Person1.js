@@ -13,13 +13,19 @@ class Person1 extends Component {
          age : this.state.age+=1
         });
     }
-
+    rest = () => {
+        this.setState({ 
+            age : this.props.age
+           });
+       }
     render() {
         return <div>
             <h1>{this.props.firstName },{ this.props.lastName }</h1>
             <p>Age: {this.state.age}</p>
             <p>Hair Color: {this.props.hairColor}</p>
             <button onClick={this.increment}>Birthday Button {this.props.firstName} { this.props.lastName }</button>
+            <p></p>
+            <button onClick={this.rest}>Rest</button>
             </div>;
     }
 }
