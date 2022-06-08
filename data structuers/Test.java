@@ -6,8 +6,13 @@ public class Test {
         tree.insertNode(15);
         tree.insertNode(3);
         tree.insertNode(13);
-        tree.printNode();
-       tree.search(15);
+        tree.printInorder();
+        System.out.println("  <== in order");
+        tree.printPreorder();
+        System.out.println("  <== pre order");
+        tree.printPostorder();
+        System.out.println("  <== post order");
+        // tree.search(15);
 
     }
 }

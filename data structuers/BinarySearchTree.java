@@ -61,17 +61,44 @@ class BinarySearchTree{
             }
         }
     }
-
-    public void print(Node root){
+    
+    //in order
+    public void printNodeInorder(Node root){
         if(root!=null){
-            print(root.left);
-            System.out.println(root.key);
-            print(root.right);
+            printNodeInorder(root.left);
+            System.out.print(root.key+" ");
+            printNodeInorder(root.right);
         }
     }   
 
-    public void printNode(){
-        print(root);
+    public void printInorder(){
+        printNodeInorder(root);
+    }
+
+    //pre order
+    public void printNodePreorder(Node root){
+        if(root!=null){
+            System.out.print(root.key+" ");
+            printNodePreorder(root.left);
+            printNodePreorder(root.right);
+        }
+    } 
+
+    public void printPreorder(){
+        printNodePreorder(root);
+    }
+
+    //post order
+    public void printNodePostorder(Node root){
+        if(root!=null){
+            printNodePostorder(root.left);
+            printNodePostorder(root.right);
+            System.out.print(root.key+" ");
+        }
+    } 
+
+    public void printPostorder(){
+        printNodePostorder(root);
     }
 
   
