@@ -14,10 +14,11 @@ const UserForm = () => {
     const [confirmError, setconfirmError] = useState("");  
 
     const handleFirstName = (e) => {
-        setFirstname(e.target.value);
+        
         if(e.target.value.length < 2) {
             setnameError("First Name must be 2 characters or longer!");
         }
+        setFirstname(e.target.value);
     }
     const handleLastName = (e) => {
         setLastname(e.target.value);

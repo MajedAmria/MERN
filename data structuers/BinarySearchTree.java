@@ -101,6 +101,32 @@ class BinarySearchTree{
         printNodePostorder(root);
     }
 
-  
+
+ 
+    public int minValue(Node node) {
+ 
+        if(node.left != null) {
+            return minValue(node.left);
+        }
+        return node.key;
+    }
+
+    public int findMinValue() {
+ 
+        return minValue(root);
+    }
+    
+    public int maxValue(Node node) {
+ 
+        if(node.right != null) {
+            return maxValue(node.right);
+        }
+        return node.key;
+    }
+    public int findMaxValue() {
+ 
+        return maxValue(root);
+    }
+ 
 }
 
