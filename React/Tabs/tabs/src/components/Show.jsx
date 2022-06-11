@@ -1,8 +1,12 @@
-
+import React from 'react';
 
 const Show = (props) => {
   return (
-    <input type="text" > {props.tabs}</input>
+    <textarea 
+    rows="4"
+    cols="50"
+   value={props.message+" content is showing here!"}
+></textarea>
   )
 }
 
