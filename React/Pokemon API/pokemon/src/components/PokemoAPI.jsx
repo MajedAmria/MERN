@@ -17,7 +17,7 @@ const PokemoAPI = () => {
             <button onClick={onClilckHandler()}>Fetch Pokemon</button>
             
             {pokemon.length > 0 && pokemon.map((person, index)=>{
-            return (<div key={index}>{person.name}</div>)
+            return (<li key={index}>{person.name}</li>)
         })}
         </div>
     );
