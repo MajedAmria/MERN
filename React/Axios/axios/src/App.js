@@ -9,10 +9,7 @@ function App() {
   const onClilckHandler=()=>{
         axios.get('https://pokeapi.co/api/v2/pokemon?limit=807&offset=0')
             .then(response=>{setResponseData(response.data.results)
-               console.log(response.data.results+"**")
-              // console.log(response.data.title+"<<")
             }
-           
             )
             
           }
