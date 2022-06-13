@@ -39,8 +39,8 @@ const toDelete=(e)=>{
         {toDo.map((tasksTodo,idx)=>{
             return (
                 <div key={idx} >
-                    <label for="task" style={isDone? {textDecorationLine:'line-through'}:{}}> {tasksTodo} </label>
-                    <input  name="task" type="checkbox" onChange={e=>setisDone(e.target.checked)} />
+                    <label for="task" style={isDone? {textDecorationLine:'line-through'}:{}}> {tasksTodo} 
+                    <input  name="task" type="checkbox" onChange={e=>setisDone(e.target.checked)} /></label>
                     <button id={idx} onClick={toDelete} style={{margin:15}} className="btn btn-dark">Delete</button>
                 </div>)
          })} 
