@@ -21,8 +21,8 @@ function App() {
           <div className="App">
             <button onClick={onClilckHandler}>Fetch Pokemon</button>
 
-            {responseData.map((person, index)=>{
-            return (<li key={index}>{person.name}</li>)
+            {responseData.map((pokemonName, index)=>{
+            return (<li key={index}>{pokemonName.name}</li>)
         })}
         </div>
 )}
