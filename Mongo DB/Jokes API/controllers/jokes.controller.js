@@ -16,13 +16,13 @@ module.exports.createNewJoke = (req, res) => {
       .catch(err => res.json({ message: "Wrong", error: err }));
   };
 
-  module.exports.updateJoke = (req, res) => {
+module.exports.updateJoke = (req, res) => {
     Joke.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
       .then(updatedJoke => res.json({ joke: updatedJoke }))
       .catch(err => res.json({ message: "Wrong", error: err }));
   };
   
-  module.exports.deleteSpecificJokes = (req, res) => {
+module.exports.deleteSpecificJokes = (req, res) => {
     Joke.deleteOne({ _id: req.params.id })
       .then(result => res.json({ result: result }))
       .catch(err => res.json({ message: "Wrong", error: err }));
