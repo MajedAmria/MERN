@@ -4,9 +4,9 @@ import { useHistory} from "react-router-dom";
 const Luke = () => {
 
     
-    const[result,setResult]=useState('people');
+    const[result,setResult]=useState("");
     const[idNumber,setidNumber]=useState("");
-    const[results,setResults]=useState("");
+   
     const history = useHistory();
   
   
@@ -14,10 +14,7 @@ const Luke = () => {
     const handleSubmit=(e)=>{
         e.preventDefault();
 
-        fetch('https://swapi.dev/api/'+result+'/'+idNumber)
-        .then(response => response.json())
-        .then(response => setResults(response.name))
-        console.log(results+"+**");
+
         history.push("/"+result+"/"+idNumber);
 
         
@@ -38,7 +35,6 @@ const Luke = () => {
         <button>Search</button>
         </form>
 
-       <h1>{results}</h1>
 
     </div>
   )
