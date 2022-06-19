@@ -13,11 +13,14 @@ export default (props) => {
         })
         .catch(err=>console.error(err));
     },[products]);
+    const removeFromDom = productId => {
+        setProducts(products.filter(products => products._id != productId));
+    }
     return (
         <div>
             <ManagerForm/>
             <hr/>
-            {loaded && <ManagerShow products={products} />}
+            {loaded && <ManagerShow products={products}  removeFromDom={removeFromDom}/>}
         </div>
     )
 }

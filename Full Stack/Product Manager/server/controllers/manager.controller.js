@@ -16,4 +16,13 @@ module.exports.findProduct = (request,response) =>{
     .then(product => response.json(product))
     .catch(err => response.json(err))
 }
-
+module.exports.updateProduct = (request, response) => {
+    ProductManager.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+        .then(updatedProduct => response.json(updatedProduct))
+        .catch(err => response.json(err))
+}
+module.exports.deleteProduct = (request, response) => {
+    ProductManager.deleteOne({ _id: request.params.id })
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
+}
