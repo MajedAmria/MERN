@@ -1,13 +1,27 @@
 
 import './App.css';
-import ManagerForm from './components/ManagerForm';
-import Main from './Main';
+import {
+  BrowserRouter,
+  Switch,
+  Route
+} from "react-router-dom";
+import Main from './views/Main';
+import Detail from './views/Detail';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-    <ManagerForm/>
+    <Switch>
+    <Route exact path="/">
+    <Main/>
+    </Route>
+    <Route path="/api/product/:id">
+    <Detail />
+    </Route>
+    </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 

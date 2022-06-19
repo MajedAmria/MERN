@@ -4,4 +4,4 @@ const ManagerSchema = new mongoose.Schema({
     price: { type: Number },
     description:{type:String}
 }, { timestamps: true });
-module.exports.Person = mongoose.model('Manager', ManagerSchema);
+module.exports.ProductManager = mongoose.model('Manager', ManagerSchema);

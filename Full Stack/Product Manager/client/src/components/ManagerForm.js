@@ -11,12 +11,20 @@ export default () => {
         e.preventDefault();
         //make a post request to create a new person
         axios.post('http://localhost:8000/api/manager', {
-           title : title,
-           price :  price,
-           description : description
+            title:title,
+            price:price,
+            description: description
         })
             .then(res=>console.log(res))
             .catch(err=>console.log(err))
+
+            clearStateForForm()
+    }
+
+    const clearStateForForm=()=>{
+        setTitle("");
+        setPrice("");
+        setDescription("");
     }
     //onChange to update firstName and lastName
     return (
