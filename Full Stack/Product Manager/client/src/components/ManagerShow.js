@@ -1,35 +1,33 @@
-import React from 'react'
-import { useHistory,useParams } from "react-router-dom";
+import React,{useState,useEffect} from 'react'
+import { Link} from "react-router-dom";
 import axios from 'axios';
+import DeleteButton from './DeleteButton';
 
 const ManagerShow = (props) => {
-    const history = useHistory();
-    const { removeFromDom } = props;
-    const fire=()=>{
-
-        {props.products.allProducts.map( (product, i) =>
-            history.push("/api/product/"+product._id)
-    )}
+    
+    const [products, setProducts] = useState([]);
    
-        }
-        const deleteProduct = (productId) => {
-            axios.delete('http://localhost:8000/api/product/' + productId)
-                .then(res => {
-                    removeFromDom(productId)
-                })
-                .catch(err => console.error(err));
-        }
+    useEffect(()=>{
+        axios.get('http://localhost:8000/api')
+        .then(res=>{
+            setProducts(res.data);
+           
+        })
+        .catch(err=>console.error(err));
+    },[products]);
+
+    const removeFromDom = (productId) => {
+        setProducts(products.filter(products => products._id != productId));
+    }
 
   return (
     <div>
         <h1>All Products</h1>
         
         {props.products.allProducts.map( (product, i) =>
-            <p><button key={i} onClick={()=>fire()}>{product.title}</button>
+            <p key={i}><Link to={"/api/product/"+product._id} >{product.title}</Link>
             ||
-            <button onClick={(e)=>{deleteProduct(product._id)}}>
-            Delete
-        </button></p>
+            <DeleteButton productId={product._id} successCallback={()=>removeFromDom(product._id)}/></p>
             )}
     </div>
   )

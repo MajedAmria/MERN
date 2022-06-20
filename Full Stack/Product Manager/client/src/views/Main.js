@@ -16,9 +16,18 @@ export default (props) => {
     const removeFromDom = productId => {
         setProducts(products.filter(products => products._id != productId));
     }
+
+    
+   
+
+    const createProduct=(product)=>{
+    axios.post('http://localhost:8000/api/manager', product)
+            .then(res=>setProducts([...products,res.data]))
+       
+    }
     return (
         <div>
-            <ManagerForm/>
+            <ManagerForm   onSubmitProp={createProduct} initialTitle="" initialPrice="" initialDescription="" buttonClick="Create Product"/>
             <hr/>
             {loaded && <ManagerShow products={products}  removeFromDom={removeFromDom}/>}
         </div>
