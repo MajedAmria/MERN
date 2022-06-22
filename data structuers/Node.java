@@ -1,6 +1,6 @@
 
 class Node{
-    int key;
+    int key, height;;
     Node left,right;
 
 

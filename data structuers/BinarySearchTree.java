@@ -11,14 +11,45 @@ class BinarySearchTree{
         root=new Node(value);
     }
 
+    int height(Node root) {
+        //no node
+        if(root == null){
+            return -1;
+        }
+        //single node
+        if (root.left==null && root.right==null){
+            return 0;
+        }
+        //calculate hight of left and right side
+       int hightofLeft= height(root.left);
+       int hightofRight= height(root.right);
+       //return max hight +1
+       if(hightofLeft>hightofRight){
+        return hightofLeft++;
+       }
+       else{
+        return hightofRight++;
+       }
+    }
+
+    //calculate a balance
+    int getBalance(Node root){
+        return Math.abs(height(root.left)-height(root.right));
+    }
+    
+    Node rightRotate(Node N){
+
+        return N; 
+    }
+
     Node insert(Node root,int value){
         if(root==null){
             root=new Node(value);
             return root;
         }
-
         if(value<root.key){
             root.left=insert(root.left,value);
+           
         }
         else if(value>root.key){
             root.right=insert(root.right,value);
