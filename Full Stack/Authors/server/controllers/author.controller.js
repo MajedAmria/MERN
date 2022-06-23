@@ -10,7 +10,8 @@ module.exports.newAuthor =(request,response) => {
     const {name} = request.body;
     Author.create({name:name})
     .then(author => response.json(author))
-    .catch(err => response.json({error:err}));
+    .catch(err => response.json({error:err}))
+    .catch(err => response.status(400).json(err))
 }
 module.exports.updateAuthor =(request, response) =>{
     Author.findOneAndUpdate({_id:request.params.id},request.body,{new:true})

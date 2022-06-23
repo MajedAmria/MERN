@@ -20,7 +20,7 @@ const AuthorShow =(props)=>{
 
    
     return (
-    <div>
+    <div className="center">
         <p>We have quotes by:</p>
         <Table dark hover>
   <thead>
