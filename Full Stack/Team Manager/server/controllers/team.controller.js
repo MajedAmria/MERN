@@ -6,8 +6,8 @@ module.exports.findAllTeam = (request,response) =>{
     .catch(err => response.json({Masseges:"Wrong",error:err}));
 }
 module.exports.newPlayer = (request,response) =>{
-    const {playername,preferedposition}= request.body;
-    Team.create({playername,preferedposition})
+    const {playername,preferedposition,game1,game2,game3 }= request.body;
+    Team.create({playername,preferedposition,game1, game2,game3})
     .then(team => response.json(team))
     .catch(err => response.json(err))
 }

@@ -1,27 +1,46 @@
 
 import React,{useState,useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Button, Card, CardBody,Table } from 'reactstrap'
 import axios from 'axios';
 const Games = (props) => {
-  const array=["Game1","Game2","Game3"]
+  const { gameId} = props;
   const [players,setPlayers]= useState([]);
-    
+  const [player, setPlayer] = useState();
+  console.log(gameId)
 
   useEffect(()=>{
-      axios.get('http://localhost:8000/players/list')
-      .then(res=>setPlayers(res.data))
-      .catch(err => console.error(err))
-  },[]);
-  const onClickHandler=(e,value)=>{
-    props.newGame(value);
+    axios.get('http://localhost:8000/players/list')
+    .then(res=>setPlayers(res.data))
+    .catch(err => console.error(err))
+},[]);
+
+  useEffect(()=> {
+    axios.get(`http://localhost:8000/status/game/${gameId}`)
+    .then(response => {
+        setPlayer(response.data);
+    })
+
+},[gameId])
+const onPlayHandler = (statusNum) => {
+  const updatedPlayer = {
+    ...player,
+    [`game${gameId}`]: statusNum
+        }
+      
+  
+  axios.put('http://localhost:8000/players/'+players._id, updatedPlayer)
+  .then(response => {
+          setPlayer(updatedPlayer);
+  })
+  .catch(err => {
+      console.log("ERROR in update player")
+  })
 }
   return (
     <div>
      
-        {array.map( (item, index) => {return(
-       <span key={index}> <Link   onClick={ (e) => onClickHandler(e, item) } to={`/status/${item}`}>{item}</Link>  </span> )
-        })}
+      
         <br/><br/>
         <Table bordered>
   <thead>
@@ -41,12 +60,14 @@ const Games = (props) => {
     <tr key={index}>
       <td>
         {player.playername}
+        
       </td>
       
       <td>
-        <Button>Playing</Button>
+        <Button value="playing" style={{backgroundColor: player.game1 === "playing" ? "green":""}}  onClick={(e) => onPlayHandler(1)}>Playing</Button>
         <Button>Not Playing</Button>
-        <Button>Undecide</Button>
+        <Button style={{backgroundColor: player.game3 === "Undecided" ? "yellow" : ""}} 
+                        onClick={(e) => onPlayHandler(3)}>Undecide</Button>
       </td>
      
     </tr>

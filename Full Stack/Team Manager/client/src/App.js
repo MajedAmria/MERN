@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Link to="/">Manage Players</Link>
       <span> | </span>
-      <Link to="/status">Manage Player Status</Link>
+      <Link to="/status/game/1">Manage Player Status</Link>
       <Switch>
         <Route exact path='/'>
           <Dashbord/>
@@ -22,7 +22,7 @@ function App() {
         <Route path='/addplayer'>
           <PlayerForm/>
         </Route>
-        <Route path='/status'>
+        <Route exact path='/status/game/:gameId'>
           <Status/>
         </Route>
       </Switch>
